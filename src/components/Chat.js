@@ -48,9 +48,15 @@ export default function Chat() {
           <div className="text-center text-sm text-neutral-400">Ask me anything.</div>
         )}
         {messages.map((m, idx) => (
-          <div key={idx} className="flex flex-col gap-1">
-            <div className="text-xs text-neutral-500">{new Date(m.at).toLocaleString()} • {m.role}</div>
-            <div className={`whitespace-pre-line rounded p-2 ${m.role === "assistant" ? "bg-white/10" : "bg-white/5"}`}>
+          <div
+            key={idx}
+            className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
+          >
+            <div
+              className={`max-w-[70%] whitespace-pre-line rounded p-2 ${
+                m.role === "assistant" ? "bg-white/10 text-left" : "bg-blue-500 text-right text-white"
+              }`}
+            >
               {m.content}
             </div>
           </div>
@@ -66,10 +72,13 @@ export default function Chat() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <button disabled={!canSend} className="rounded-md bg-white/10 px-5 py-3 text-base hover:bg-white/20 disabled:opacity-50">Send</button>
+        <button
+          disabled={!canSend}
+          className="rounded-md bg-white/10 px-5 py-3 text-base hover:bg-white/20 disabled:opacity-50"
+        >
+          Send
+        </button>
       </form>
     </div>
   );
 }
-
-
