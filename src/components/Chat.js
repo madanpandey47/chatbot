@@ -54,7 +54,7 @@ export default function Chat() {
           >
             <div
               className={`max-w-[70%] whitespace-pre-line rounded p-2 ${
-                m.role === "assistant" ? "bg-white/10 text-left" : "bg-blue-500 text-right text-white"
+                m.role === "assistant" ? "bg-white/10 text-left" : "bg-zinc-500 text-right text-white"
               }`}
             >
               {m.content}
